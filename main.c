@@ -34,9 +34,8 @@ int main() {
     scanf("%llu", &N);
     printf("N = %llu\n", N);
     int max_length = ceil(log2(N));
-    printf("max_length = %d\n", max_length);
     as = malloc(sizeof(ULL) * max_length);
-    printf("malloced\n");
+
     combinations(1, 0, 0);
     return 0;
 }
