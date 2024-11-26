@@ -1,24 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <assert.h>
 
-#define N 100
+typedef unsigned long long ULL;
 
-int as[N];
+ULL N;
+ULL *as;
 
-void combinations(int product, int sum, int index) {
+void combinations(ULL product, ULL sum, ULL index) {
     assert(index < N);
 
-    int max = index > 0 ? as[index-1] : N;
+    ULL max = index > 0 ? as[index-1] : N;
 
-    for (int a = 2; a <= max; a++) {
+    for (ULL a = 2; a <= max; a++) {
         as[index] = a;
-        int new_product = product * a;
-        int new_sum = sum + a;
+        ULL new_product = product * a;
+        ULL new_sum = sum + a;
 
         if (new_product > new_sum + N - index - 1) {
             return;
         } if (new_product == new_sum + N - index - 1) {
-            for (int i = 0; i <= index; i++) printf("%d ", as[i]);
+            for (ULL i = 0; i <= index; i++) printf("%llu ", as[i]);
             printf("\n");
             return;
         }
@@ -28,6 +31,12 @@ void combinations(int product, int sum, int index) {
 }
 
 int main() {
+    scanf("%llu", &N);
+    printf("N = %llu\n", N);
+    int max_length = ceil(log2(N));
+    printf("max_length = %d\n", max_length);
+    as = malloc(sizeof(ULL) * max_length);
+    printf("malloced\n");
     combinations(1, 0, 0);
     return 0;
 }
