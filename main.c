@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <assert.h>
 
 typedef unsigned long long ULL;
 
@@ -9,8 +8,6 @@ ULL N;
 ULL *as;
 
 void combinations(ULL product, ULL sum, ULL index) {
-    assert(index < N);
-
     ULL max = index > 0 ? as[index-1] : N;
 
     for (ULL a = 2; a <= max; a++) {
