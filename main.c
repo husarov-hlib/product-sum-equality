@@ -7,7 +7,7 @@ typedef unsigned long long ULL;
 ULL N;
 ULL *as;
 
-void combinations(ULL product, ULL sum, ULL index) {
+void extend(ULL product, ULL sum, ULL index) {
     ULL max = index > 0 ? as[index-1] : N;
 
     for (ULL a = 2; a <= max; a++) {
@@ -23,7 +23,7 @@ void combinations(ULL product, ULL sum, ULL index) {
             return;
         }
 
-        combinations(new_product, new_sum, index+1);
+        extend(new_product, new_sum, index+1);
     }
 }
 
@@ -33,6 +33,6 @@ int main() {
     int max_length = ceil(log2(N));
     as = malloc(sizeof(ULL) * max_length);
 
-    combinations(1, 0, 0);
+    extend(1, 0, 0);
     return 0;
 }
