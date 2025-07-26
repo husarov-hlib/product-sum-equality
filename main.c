@@ -7,7 +7,7 @@ typedef unsigned long long ULL;
 ULL N;
 ULL *sequence;
 
-void extend(ULL product, ULL sum, ULL index) {
+void extend(ULL product, ULL sum, ULL index, ULL *sequence) {
     ULL max = index > 0 ? sequence[index-1] : N;
 
     for (ULL a = 2; a <= max; a++) {
@@ -23,7 +23,7 @@ void extend(ULL product, ULL sum, ULL index) {
             return;
         }
 
-        extend(new_product, new_sum, index+1);
+        extend(new_product, new_sum, index+1, sequence);
     }
 }
 
@@ -33,6 +33,6 @@ int main() {
     int max_length = ceil(log2(N));
     sequence = malloc(sizeof(ULL) * max_length);
 
-    extend(1, 0, 0);
+    extend(1, 0, 0, sequence);
     return 0;
 }
