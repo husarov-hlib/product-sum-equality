@@ -5,20 +5,20 @@
 typedef unsigned long long ULL;
 
 ULL N;
-ULL *as;
+ULL *sequence;
 
 void extend(ULL product, ULL sum, ULL index) {
-    ULL max = index > 0 ? as[index-1] : N;
+    ULL max = index > 0 ? sequence[index-1] : N;
 
     for (ULL a = 2; a <= max; a++) {
-        as[index] = a;
+        sequence[index] = a;
         ULL new_product = product * a;
         ULL new_sum = sum + a;
 
         if (new_product > new_sum + N - index - 1) {
             return;
         } if (new_product == new_sum + N - index - 1) {
-            for (ULL i = 0; i <= index; i++) printf("%llu ", as[i]);
+            for (ULL i = 0; i <= index; i++) printf("%llu ", sequence[i]);
             printf("\n");
             return;
         }
@@ -31,7 +31,7 @@ int main() {
     scanf("%llu", &N);
     printf("N = %llu\n", N);
     int max_length = ceil(log2(N));
-    as = malloc(sizeof(ULL) * max_length);
+    sequence = malloc(sizeof(ULL) * max_length);
 
     extend(1, 0, 0);
     return 0;
