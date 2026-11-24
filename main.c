@@ -35,8 +35,8 @@ void *make_thread(void *arg) {
     ULL *sequence = malloc(sizeof(ULL) * max_length);
 
     for (ULL n = thread_num+2; n <= N; n += THREADS) {
-	sequence[0] = n;
-	extend(n, n, 1, sequence);
+        sequence[0] = n;
+        extend(n, n, 1, sequence);
     }
 
     free(sequence);
@@ -49,13 +49,13 @@ int main() {
 
     pthread_t thread_ids[THREADS];
     for (ULL i = 0; i < THREADS; i++) {
-	int res = pthread_create(&(thread_ids[i]), NULL, make_thread, (void *) i);
-	// printf("res = %d\n", res);
-	// make_thread((void *) thread_num);
+        int res = pthread_create(&(thread_ids[i]), NULL, make_thread, (void *) i);
+        // printf("res = %d\n", res);
+        // make_thread((void *) thread_num);
     }
 
     for (ULL i = 0; i < THREADS; i++)
-	pthread_join(thread_ids[i], NULL);
+        pthread_join(thread_ids[i], NULL);
 
     return 0;
 }
