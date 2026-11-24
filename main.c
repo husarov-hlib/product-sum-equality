@@ -48,9 +48,8 @@ int main() {
     printf("N = %llu\n", N);
 
     pthread_t thread_ids[THREADS];
-    for (ULL i = 0; i < THREADS; i++) {
-        int res = pthread_create(&(thread_ids[i]), NULL, make_thread, (void *) i);
-    }
+    for (ULL i = 0; i < THREADS; i++)
+        pthread_create(&(thread_ids[i]), NULL, make_thread, (void *) i);
 
     for (ULL i = 0; i < THREADS; i++)
         pthread_join(thread_ids[i], NULL);
