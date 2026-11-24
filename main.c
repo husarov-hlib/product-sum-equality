@@ -50,8 +50,6 @@ int main() {
     pthread_t thread_ids[THREADS];
     for (ULL i = 0; i < THREADS; i++) {
         int res = pthread_create(&(thread_ids[i]), NULL, make_thread, (void *) i);
-        // printf("res = %d\n", res);
-        // make_thread((void *) thread_num);
     }
 
     for (ULL i = 0; i < THREADS; i++)
