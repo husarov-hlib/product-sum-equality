@@ -12,12 +12,6 @@ ULL N;
 void extend(ULL product, ULL sum, ULL index, ULL *sequence) {
     ULL max = index > 0 ? sequence[index-1] : N;
 
-    if ((1 << index) >= N) {
-        printf("current index = %llu\n", index);
-        for (ULL i = 0; i < index; i++) printf("%llu ", sequence[i]);
-        printf("\n");
-    }
-
     for (ULL a = 2; a <= max; a++) {
         sequence[index] = a;
         ULL new_product = product * a;
