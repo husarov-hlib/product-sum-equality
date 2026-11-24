@@ -19,7 +19,7 @@ void extend(ULL product, ULL sum, ULL index, ULL *sequence) {
 
         if (new_product > new_sum + N - index - 1) {
             return;
-        } if (new_product == new_sum + N - index - 1) {
+        } else if (new_product == new_sum + N - index - 1) {
             for (ULL i = 0; i <= index; i++) printf("%llu ", sequence[i]);
             printf("\n");
             return;
